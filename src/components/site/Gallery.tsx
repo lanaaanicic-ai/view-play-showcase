@@ -35,8 +35,8 @@ function ProjectTile({ project, onOpen }: { project: Project; onOpen: () => void
         style={{ aspectRatio: "4 / 3" }}
       >
         <motion.img
-          src={project.images[0].src}
-          alt={project.images[0].alt}
+          src={project.images[0]!.src}
+          alt={project.images[0]!.alt}
           loading="lazy"
           width={1408}
           height={1056}

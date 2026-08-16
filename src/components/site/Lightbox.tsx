@@ -76,12 +76,13 @@ export function Lightbox({ project, onClose }: { project: Project | null; onClos
             <AnimatePresence initial={false} custom={dir} mode="popLayout">
               <motion.img
                 key={index}
-                src={project.images[index].src}
-                alt={project.images[index].alt}
+                src={project.images[index]!.src}
+                alt={project.images[index]!.alt}
                 custom={dir}
-                initial={(d: number) => ({ opacity: 0, x: d === 0 ? 0 : d * 60, scale: d === 0 ? 0.96 : 1 })}
-                animate={{ opacity: 1, x: 0, scale: 1 }}
-                exit={(d: number) => ({ opacity: 0, x: -d * 60 })}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
                 transition={{ duration: 0.45, ease }}
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
