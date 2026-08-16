@@ -5,6 +5,16 @@ import type { Project } from "@/data/projects";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+const slideVariants = {
+  enter: (d: number) => ({
+    opacity: 0,
+    x: d === 0 ? 0 : d * 60,
+    scale: d === 0 ? 0.96 : 1,
+  }),
+  center: { opacity: 1, x: 0, scale: 1 },
+  exit: (d: number) => ({ opacity: 0, x: -d * 60, scale: 1 }),
+};
+
 export function Lightbox({ project, onClose }: { project: Project | null; onClose: () => void }) {
   const [[index, dir], setIndex] = useState<[number, number]>([0, 0]);
 
